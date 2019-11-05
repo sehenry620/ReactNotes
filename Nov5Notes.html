@@ -5,7 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Start of a Simple Counter</title>
+    <title>Counter</title>
+    <style>
+        body {
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            margin: 0.5rem;
+        }
+
+        .yourColor {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
@@ -17,32 +33,60 @@
 
 
     <script type="text/babel">
-        class Counter extends React.Component{
-            constructor(props)
+        class Counter extends React.Component {
+            constructor(props) {
             super(props);
+
             this.state = {
-                count: 0
-            }
-        }
+            count: 0
+        };
+    }
 
-        render(){
-            return (
-                <div>
-                {this.state.count}
-                </div>
-            )
+    handleIncrement = (event) => {
+        if(this.state.count < 20){
+            this.setState((state,props) => ({
+            count: state.count + 1
+            }));
         }
+    
+    }
 
+    handleDecrement = (event) => {
+        if(this.state.count > 0){
+            this.setState((state,props) => ({
+                count: state.count - 1
+            }));
+        }
         
-    
-    
+    }
+
+    handleReset = (event) => {
+        
+    }
+
+    render() {
+        let changeColor = "";
+        if(this.state.count >= 10){
+            changeColor = "yourColor"
+        }
+        return (
+            <div>
+                <button onClick={this.handleDecrement}>decrement (-)</button>
+                <span className ={changeColor}>{this.state.count}</span>
+                <button onClick={this.handleIncrement}>increment (+)</button>
+                <button>Reset</button>
+            </div>
+        );
+    }
+}
+
+    ReactDOM.render(
+        <Counter />,
+        document.getElementById("root")
+    );
+
     
     </script>
-
-
-
-
-
 
 
 

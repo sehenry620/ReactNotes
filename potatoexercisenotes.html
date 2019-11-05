@@ -8,5 +8,37 @@
 </head>
 <body>
     
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        function OnePotato(props){
+            return <h1>{props.name} loves {props.type} potatoes!</h1>;
+        }
+    
+        class TwoPotato extends React.Component{
+            render(){
+                return <h1>{this.props.name} loves {this.props.type} potatoes! </h1>;
+            }
+        }
+        ReactDOM.render(
+            <div>
+            <OnePotato name="Eric" type="Yukon Gold"/>
+            <TwoPotato name="Susan" type="French Fried"/>
+            </div>,
+            document.getElementById("root")
+        );
+    </script>
+
+
+
+
+
+
+
+
 </body>
 </html>
